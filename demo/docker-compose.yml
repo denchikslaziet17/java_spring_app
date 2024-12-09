@@ -1,0 +1,15 @@
+
+
+services:
+  db:
+    image: postgres:10-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: name
+      POSTGRES_DB: db
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # монтируем SQL-скрипт
+    ports:
+      - "5434:5432"  # правильный формат порта
+
